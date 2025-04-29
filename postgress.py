@@ -9,14 +9,14 @@ db_name = os.getenv("DB_NAME")
 db_user = os.getenv("DB_USER")
 db_pass = os.getenv("DB_PASS")
 
-connection = psycopg2.connect(host = db_host, databse = db_name, user = db_user, password = db_pass)
+connection = psycopg2.connect(host = db_host, database = db_name, user = db_user, password = db_pass)
 
 # after sucessfully conencting to the databse 
 print('Connected to the database')
 
 # cursor is a pointer to perform databse manipulation operations 
 cursor = connection.cursor()
-cursor.execute('SELECT version')
+cursor.execute('SELECT version();')
 db_version = cursor.fetchone()
 print(db_version)
 
