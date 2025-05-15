@@ -50,4 +50,28 @@ pip install -r requirements.txt
 
 - Create a .env file in the project root. Paste the variables shared in our Slack channel.
 
-    
+### How to Add a New Table to the Database 
+
+1.	Create a RawData/ folder (if not already created):
+	- Place any new .csv files you’d like to upload into this folder.
+	- This folder is excluded in .gitignore to prevent CSVs from being committed (especially useful if the data becomes sensitive in the future).
+
+2.	Update the table_schemas dictionary in the Python script:
+    - The exact filename (must match what’s in RawData/)
+    - The name of the SQL table you want to create
+    - The columns you want to upload, with their PostgreSQL data types
+
+- Example:
+
+```
+table_schemas = {
+    "My_New_Data.csv": {
+        "table_name": "my_new_table",
+        "columns": {
+            "ColumnA": "TEXT",
+            "ColumnB": "INTEGER",
+            "Timestamp": "DATE"
+        }
+    }
+}
+```
