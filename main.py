@@ -1,16 +1,14 @@
-
-
 import pandas as pd 
 import psycopg2 
 import os 
 from dotenv import load_dotenv
 from io import StringIO
 
-file_path_str="wildfire-data\\csv_data\\test_data.csv" #for a new dataset change the last part of this code, to give custom names: fire_data_df = change_names(fire_data_df) 
+load_dotenv()
+file_path_str = os.getenv("FILEPATH") #for a new dataset change the last part of this code, to give custom names: fire_data_df = change_names(fire_data_df) 
 fire_data_df = pd.read_csv(file_path_str)
 print(len(fire_data_df))
 
-load_dotenv()
 # info needed to connect to database 
 db_host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
